@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical">
+		<EditText android:id="@+id/contactsEditText"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/contactsEditTextHint">
+		</EditText>
+		<EditText android:id="@+id/numberEditText"
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:hint="@string/numberEditTextHint" 
+			android:inputType="number">
+		</EditText>
+		<EditText android:id="@+id/messageEditText"
+			android:layout_width="fill_parent" 
+			android:layout_height="fill_parent"
+			android:layout_weight="3"
+			android:hint="@string/messageEditTextHint">
+		</EditText>
+		<Button android:id="@+id/sendButton" 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+			android:layout_weight="0"
+			android:text="@string/sendButtonText">
+		</Button>
+</LinearLayout>
