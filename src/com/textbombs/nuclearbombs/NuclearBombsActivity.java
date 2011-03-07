@@ -33,21 +33,30 @@ public class NuclearBombsActivity extends Activity {
 				String contactsNumber = contactsEditText.getText().toString();
 				String message = messageEditText.getText().toString();
 				String numberOfSms = numberEditText.getText().toString();
+				int numberOfSmsInt = 0;
 				
-				if(contactsNumber.length() > 0 && message.length() > 0 && numberOfSms.length() > 0){
-					
-					sendSms(contactsNumber, message, 1);
-					
+				/*
+				 *  Convert the numberOfSms string to int
+				 */
+				try{
+					numberOfSmsInt = Integer.parseInt(numberOfSms.trim());
+				} catch(NumberFormatException e){
+					// TODO setup a toast for the exception
 				}
 				
+				if(contactsNumber.length() > 0 && message.length() > 0 && numberOfSms.length() > 0){
+					sendSms(contactsNumber, message, numberOfSmsInt);
+				}	
 			}
-        	
         });
     }
 
     private void sendSms(String contactsNumber, String message, int numberOfSms){
     	// TODO start a new thread to send the SMS
     	SmsManager sms = SmsManager.getDefault();
-    	sms.sendTextMessage(contactsNumber, null, message, null, null);
+    	
+    	for(int i = 0; i < numberOfSms; i++){
+       		sms.sendTextMessage(contactsNumber, null, message, null, null);
+    	}
     }
 }
