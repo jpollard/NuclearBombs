@@ -35,9 +35,7 @@ public class NuclearBombsActivity extends Activity {
 				String numberOfSms = numberEditText.getText().toString();
 				int numberOfSmsInt = 0;
 				
-				/*
-				 *  Convert the numberOfSms string to int
-				 */
+				//  Convert the numberOfSms string to int
 				try{
 					numberOfSmsInt = Integer.parseInt(numberOfSms.trim());
 				} catch(NumberFormatException e){
@@ -46,16 +44,25 @@ public class NuclearBombsActivity extends Activity {
 				
 				if(contactsNumber.length() > 0 && message.length() > 0 && numberOfSms.length() > 0){
 					sendSms(contactsNumber, message, numberOfSmsInt);
+					
+					// Reset the text fields 
+					contactsEditText.setText("");
+					messageEditText.setText("");
+					numberEditText.setText("");
+					
+					// TODO Add a toast saying the messages are sending...
 				}	
 			}
         });
     }
 
-    private void sendSms(String contactsNumber, String message, int numberOfSms){
-    	// TODO start a new thread to send the SMS
+    private static void sendSms(String contactsNumber, String message, int numberOfSms){
+    	// TODO start a new thread to send the SMS (perhaps setup a service instead. RESEARCH)
     	SmsManager sms = SmsManager.getDefault();
     	
     	for(int i = 0; i < numberOfSms; i++){
+    		
+    		// TODO setup intent listeners to verify that all messages get sent
        		sms.sendTextMessage(contactsNumber, null, message, null, null);
     	}
     }
